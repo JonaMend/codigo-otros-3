@@ -1,13 +1,13 @@
-input {
+/*Jonathan Emanuel Mendoza Olvera*/
+
+.input { /*Se le agrega un punto*/ 
   width: 500px;
   height: 40px;
   font-size: 18px;
 }
-
 #lista-de-productos {
   display: flex
 }
-
 .producto {
   width: 200px;
   height: 200px;
@@ -17,7 +17,6 @@ input {
   flex-direction: column;
   align-items: center;
 }
-
 .producto img {
   width: 70%;
   height: auto

@@ -1,60 +1,61 @@
+//Jonathan Emanuel Mendoza Olvera
 // Tenemos un li de productos
 
 const productos = [
-  {nombre: "Zapato negro", tipo: "zapato", color: "negro", img: "./taco-negro.jpg"},
-  {nombre: "Zapato azul", tipo: "zapato", color: "azul", img: "./taco-azul.jpg"},
-  {nombre: "Bota negra", tipo: "bota", color: "negro", img: "./bota-negra.jpg"},
-  {nombre: "Bota azul", tipo: "bota", color: "azul", img: "./bota-azul.jpg"},
-  {nombre: "Zapato rojo", tipo: "zapato", color: "rojo", img: "./zapato-rojo.jpg"}
+  {nombre: "Zapato negro", tipo: "zapato", color: "negro", img: "./assets/img/taco-negro.jpg"},
+  {nombre: "Zapato azul", tipo: "zapato", color: "azul", img: "./assets/img/taco-azul.jpg"},
+  {nombre: "Bota negra", tipo: "bota", color: "negro", img: "./assets/img/bota-negra.jpg"},
+  {nombre: "Bota azul", tipo: "bota", color: "azul", img: "./assets/img/bota-azul.jpg"},
+  {nombre: "Zapato rojo", tipo: "zapato", color: "rojo", img: "./assets/img/zapato-rojo.jpg"}
 ]
 
-const li = document.getElementsByName("lista-de-productos")
-const $i = document.querySelector('.input');
+const listaProduc = document.getElementById("lista-de-productos"); //li=listaproducto 
+const listaInput = document.querySelector('.input');//Le reasgine otros nombres a la const $i = lista Input
 
 for (let i = 0; i < productos.length; i++) {
-  var d = document.createElement("div")
-  d.classList.add("producto")
+  var divCreado = document.createElement("div");//d= divCreado
+  divCreado.classList.add("producto");
 
-  var ti = document.createElement("p")
-  ti.classList.add("titulo")
-  ti.textContent = productos[i].nombre
-  
-  var imagen = document.createElement("img");
+  let pCreado = document.createElement("p");//ti = pCreado
+  pCreado.classList.add("titulo");
+  pCreado.textContent = productos[i].nombre
+
+  let imagen = document.createElement("img");
   imagen.setAttribute('src', productos[i].img);
 
-  d.appendChild(ti)
-  d.appendChild(imagen)
+  divCreado.appendChild(pCreado);
+  divCreado.appendChild(imagen);
 
-  li.appendChild(d)
+  listaProduc.appendChild(divCreado);
 }
 
-displayProductos(productos)
+//displayProductos(productos); Se comento este bloque, ya que al parecer no hacia nada
 const botonDeFiltro = document.querySelector("button");
 
 botonDeFiltro.onclick = function() {
-  while (li.firstChild) {
-    li.removeChild(li.firstChild);
+  while (listaProduc.firstChild) {
+    listaProduc.removeChild(listaProduc.firstChild);
   }
 
-  const texto = $i.value;
+  const texto = listaInput.value;
   console.log(texto);
   const productosFiltrados = filtrado(productos, texto );
 
   for (let i = 0; i < productosFiltrados.length; i++) {
-    var d = document.createElement("div")
-    d.classList.add("producto")
-  
-    var ti = document.createElement("p")
-    ti.classList.add("titulo")
-    ti.textContent = productosFiltrados[i].nombre
-    
-    var imagen = document.createElement("img");
+    var divCreado = document.createElement("div");
+    divCreado.classList.add("producto");
+
+    let pCreado = document.createElement("p");
+    pCreado.classList.add("titulo");
+    pCreado.textContent = productosFiltrados[i].nombre
+
+    let imagen = document.createElement("img");
     imagen.setAttribute('src', productosFiltrados[i].img);
-  
-    d.appendChild(ti)
-    d.appendChild(imagen)
-  
-    li.appendChild(d)
+
+    divCreado.appendChild(pCreado);
+    divCreado.appendChild(imagen);
+
+    listaProduc.appendChild(divCreado);
   }
 }
 
